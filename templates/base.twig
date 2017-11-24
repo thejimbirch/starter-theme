@@ -6,23 +6,23 @@
 	</head>
 {% endblock %}
 
-	<body class="{{body_class}}" data-template="base.twig">
-		<header class="header" >
+	<body class="{{ body_class }}" data-template="base.twig">
+		<header class="header container">
 			{% block header %}
-				<div class="wrapper">
-					<h1 class="hdr-logo" role="banner">
-						<a class="hdr-logo-link" href="{{site.url}}" rel="home">{{site.name}}</a>
-					</h1>
-					<nav id="nav-main" class="nav-main" role="navigation">
-						{% include "menu.twig" with {'menu': menu.get_items} %}
-					</nav><!-- #nav -->
+				<div class="header__branding" role="banner">
+					<a href="{{ site.url }}" rel="home">{{ site.name }}</a>
 				</div>
+				<nav id="nav-main" class="nav-main" role="navigation">
+					{% include "menu.twig" with {'menu': menu.get_items} %}
+				</nav><!-- #nav -->
 			{% endblock %}
 		</header>
 
-		<section id="content" role="main" class="content-wrapper">
-			{% if title %}<h1>{{title}}</h1>{% endif %}
-			<div class="wrapper {{sidebar_class}}">
+		<div id="main-content" role="main" class="container">
+			{% if title %}
+				<h1>{{ title }}</h1>
+			{% endif %}
+			<div class="wrapper {{ sidebar_class }}">
 				{% block content %}
 					Sorry, no content
 				{% endblock %}
@@ -32,13 +32,14 @@
 					{{sidebar}}
 				</aside>
 			{% endif %}
-		</section>
+		</div>
 
 		{% block footer %}
 			<footer id="footer">
 				{% include 'footer.twig' %}
 			</footer>
 			{{ function('wp_footer') }}
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 		{% endblock %}
 	</body>
 </html>
