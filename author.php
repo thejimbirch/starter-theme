@@ -8,6 +8,7 @@
  * @subpackage  Timber
  * @since    Timber 0.1
  */
+
 global $wp_query;
 
 $context = Timber::get_context();

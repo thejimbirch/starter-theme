@@ -1,24 +1,35 @@
 <?php
+/**
+ * Tests for bootstrap.
+ *
+ * @package  WordPress
+ * @subpackage  Timber
+ * @since    Timber 0.1
+ */
 
-if ( file_exists($composer_autoload = __DIR__ . '/../vendor/autoload.php') ) {
-	require_once($composer_autoload);
+if ( file_exists( $composer_autoload = __DIR__ . '/../vendor/autoload.php' ) ) {
+	require_once( $composer_autoload );
 }
 
-
-$_tests_dir = getenv('WP_TESTS_DIR');
-if ( !$_tests_dir ) $_tests_dir = '/tmp/wordpress-tests-lib';
+$_tests_dir = getenv( 'WP_TESTS_DIR' );
+if ( ! $_tests_dir ) {
+	$_tests_dir = '/tmp/wordpress-tests-lib';
+}
 
 require_once $_tests_dir . '/includes/functions.php';
 
+/**
+ * The _manually_load_plugin description.
+ */
 function _manually_load_plugin() {
-	$plugins_dir = dirname( __FILE__ ).'/../../../plugins';
-	$timber =  $plugins_dir.'/timber/timber.php';
-	if ( file_exists($timber) ) {
-		require_once($timber);
+	$plugins_dir = dirname( __FILE__ ) . '/../../../plugins';
+	$timber = $plugins_dir . '/timber/timber.php';
+	if ( file_exists( $timber ) ) {
+		require_once( $timber );
 	} else {
-		$timber_library = $plugins_dir.'/timber-library/timber.php';
-		if ( file_exists($timber_library) ) {
-			require_once($timber_library);
+		$timber_library = $plugins_dir . '/timber-library/timber.php';
+		if ( file_exists( $timber_library ) ) {
+			require_once( $timber_library );
 		}
 	}
 }

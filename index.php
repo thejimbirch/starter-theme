@@ -1,6 +1,6 @@
 <?php
 /**
- * The main template file
+ * The main template file.
  * This is the most generic template file in a WordPress theme
  * and one of the two required files for a theme (the other being style.css).
  * It is used to display a page when nothing more specific matches a query.
@@ -12,6 +12,7 @@
  * @subpackage  Timber
  * @since   Timber 0.1
  */
+
 $context = Timber::get_context();
 $context['posts'] = new Timber\PostQuery();
 $context['foo'] = 'bar';
