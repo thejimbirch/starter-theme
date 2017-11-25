@@ -1,22 +1,26 @@
 {% block html_head_container %}
-
-{% include 'html-header.twig' %}
-	{% block head %}
-	{% endblock %}
-	</head>
+	{% include 'html-header.twig' %}
+		{% block head %}
+		{% endblock %}
+		</head>
 {% endblock %}
 
 	<body class="{{ body_class }}" data-template="base.twig">
-		<header class="header container">
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
 			{% block header %}
-				<div class="header__branding" role="banner">
-					<a href="{{ site.url }}" rel="home">{{ site.name }}</a>
-				</div>
-				<nav id="nav-main" class="nav-main" role="navigation">
+				<a class="navbar-brand" href="{{ site.url }}" rel="home">{{ site.name }}</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarCollapse">
 					{% include "menu.twig" with {'menu': menu.get_items} %}
-				</nav><!-- #nav -->
+					<form class="form-inline mt-2 mt-md-0" role="search" method="get" id="searchform" action="/">
+						<input class="form-control mr-sm-2" name="s" id="s" type="text" placeholder="Search" aria-label="Search">
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+					</form>
+				</div>
 			{% endblock %}
-		</header>
+		</nav>
 
 		<div id="main-content" role="main" class="container">
 			{% if title %}
@@ -39,7 +43,6 @@
 				{% include 'footer.twig' %}
 			</footer>
 			{{ function('wp_footer') }}
-			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 		{% endblock %}
 	</body>
 </html>

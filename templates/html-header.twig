@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--><html class="no-js" {{ site.language_attributes }}> <!--<![endif]-->
 <head>
     <meta charset="{{ site.charset }}" />
-        <title>   
+        <title>
             {% if wp_title %}
                 {{ wp_title }} - {{ site.name }}
             {% else %}
@@ -19,4 +19,5 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="author" href="{{ site.theme.link }}/humans.txt" />
     <link rel="pingback" href="{{ site.pingback_url }}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     {{function('wp_head')}}
