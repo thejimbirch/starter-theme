@@ -9,8 +9,8 @@
  * WooCommerce) you can delete this file and footer.php
  *
  * @package  WordPress
- * @subpackage  Timber
- * @since    Timber 0.1
+ * @subpackage  WPTwigstrap
+ * @since    WPTwigstrap 0.1
  */
 
 $GLOBALS['timber_context'] = Timber::get_context();

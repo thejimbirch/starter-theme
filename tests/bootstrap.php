@@ -3,8 +3,8 @@
  * Tests for bootstrap.
  *
  * @package  WordPress
- * @subpackage  Timber
- * @since    Timber 0.1
+ * @subpackage  WPTwigstrap
+ * @since    WPTwigstrap 0.1
  */
 
 if ( file_exists( $composer_autoload = __DIR__ . '/../vendor/autoload.php' ) ) {

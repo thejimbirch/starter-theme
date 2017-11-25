@@ -9,8 +9,8 @@
  * WooCommerce) you can delete this file and header.php
  *
  * @package  WordPress
- * @subpackage  Timber
- * @since    Timber 0.1
+ * @subpackage  WPTwigstrap
+ * @since    WPTwigstrap 0.1
  */
 
 $timber_context = $GLOBALS['timber_context'];
