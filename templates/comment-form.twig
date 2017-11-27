@@ -1,36 +1,27 @@
-<div class="comment-form">
-    <h3> add comment </h3>
+<div class="comments__comment-form">
+	<div class="comments__header">Add comment</div>
+	<form id="form" method="post" action="{{ site.url~'/wp-comments-post.php' }}">
+		{% if user %}
+			<input type="hidden" name="email" value="{{ user.email }}">
+			<input type="hidden" name="author" value="{{ user.name }}">
+			<input type="hidden" name="url" value="{{ user.link }}">
+		{% else %}
+			<label for="email">Email</label>
+			<input required name="email" type="text" id="email"/>
 
-    <form id="form" class="comment-form" method="post" action="{{ site.url~'/wp-comments-post.php' }}">
-        {% if  user %}
-            <input type="hidden" name="email" value="{{ user.email }}">
-            <input type="hidden" name="author" value="{{ user.name }}">
-            <input type="hidden" name="url" value="{{ user.link }}">
-        {% else %}
-            <div>
-                <label for="email"> email </label>
-                <input required name="email" type="text" id="email"/>
+			<label for="author">Username</label>
+			<input required name="author" type="text" id="author"/>
 
-                <label for="author"> username </label>
-                <input required name="author" type="text" id="author"/>
-
-                <label for="url"> url </label>
-                <input name="url" id="url" type="text"/>
-            </div>
-        {% endif %}
-
-        <div>
-            <label for="comment"> comment </label>
-            <textarea placeholder="comment text" name="comment" cols="60" rows="3" id="comment"></textarea>
-        </div>
-
-        <input name="comment_post_ID" value="{{ post.id }}" id="comment_post_ID" type="hidden">
-        <input name="comment_parent" id="comment_parent" value="{{ comment.ID|default('0') }}" type="hidden">
-
-        <div>
-            <button type="submit" name="Submit" class="btn"> send </button>
-            <button type="reset"> cancel </button>
-            <p> Your comment will be revised by the site if needed. </p>
-        </div>
-    </form>
+			<label for="url">Website</label>
+			<input name="url" id="url" type="text"/>
+		{% endif %}
+		<label for="comment">Comment</label><br>
+		<textarea placeholder="comment text" name="comment" cols="60" rows="5" id="comment"></textarea>
+		<input name="comment_post_ID" value="{{ post.id }}" id="comment_post_ID" type="hidden">
+		<input name="comment_parent" id="comment_parent" value="{{ comment.ID|default('0') }}" type="hidden">
+		<div class="comments__comment-form__actions">
+			<button type="submit" name="Submit" class="comments__comment-form__actions__submit btn btn-primary">Submit</button>
+			<button type="reset" class="comments__comment-form__actions__reset btn btn-default">Cancel</button>
+		</div>
+	</form>
 </div>

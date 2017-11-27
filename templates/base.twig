@@ -4,7 +4,6 @@
 		{% endblock %}
 		</head>
 {% endblock %}
-
 	<body class="{{ body_class }}" data-template="base.twig">
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
 			{% block header %}
@@ -21,28 +20,28 @@
 				</div>
 			{% endblock %}
 		</nav>
-
-		<div id="main-content" role="main" class="container">
-			{% if title %}
-				<h1>{{ title }}</h1>
-			{% endif %}
-			<div class="wrapper {{ sidebar_class }}">
-				{% block content %}
-					Sorry, no content
-				{% endblock %}
+		<div id="main-content" class="container">
+			<div class="row">
+				<div class="main-content__primary main-content__primary-{{ sidebar_class }}">
+					{% block content %}
+						Sorry, no content
+					{% endblock %}
+				</div>
+				{% if sidebar %}
+					<aside class="main-content__secondary">
+						{{ sidebar }}
+					</aside>
+				{% endif %}
 			</div>
-			{% if sidebar %}
-				<aside class="layout-sidebar">
-					{{sidebar}}
-				</aside>
-			{% endif %}
 		</div>
-
 		{% block footer %}
 			<footer class="site-footer" role="contentinfo">
 				{% include 'footer.twig' %}
 			</footer>
 			{{ function('wp_footer') }}
+			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 		{% endblock %}
 	</body>
 </html>

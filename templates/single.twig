@@ -1,38 +1,29 @@
 {% extends "base.twig" %}
-
 {% block content %}
-	<div class="content-wrapper">
-		<article class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}">
-			<img src="{{ post.thumbnail.src|resize(1200, 300) }}">
-			<section class="article-content">
-				<h1 class="article-h1">{{ post.title }}</h1>
-				<p class="blog-author">
-					<span>By</span><a href="{{post.author.path}}"> {{ post.author.name }} </a><span>&bull;</span> {{ post.date }}
-				</p>
-				<div class="article-body">
-					{{post.content}}
-				</div>
-			</section>
-
-			<!-- comment box -->
-			<section class="comment-box">
-				<!-- comments -->
-				<div class="comments">
-				    {% if post.comments %}
-					<h3> comments </h3>
-					{% for cmt in post.comments %}
-					    {% include "comment.twig" with {comment:cmt} %}
-					{% endfor %}
-				    {% endif %}
-				</div>
-
-				{% if post.comment_status == "closed" %}
-					<p> comments for this post are closed </p>
-				{% else %}
-				    <!-- comment form -->
-				    {% include "comment-form.twig" %}
-				{% endif %}
-			</section>
-		</article>
-	</div><!-- /content-wrapper -->
+	<article class="post post--type-{{ post.post_type }} post--id-{{ post.ID }}">
+		<img src="{{ post.thumbnail.src }}" class="post__image img-fluid">
+		<h1>{{ post.title }}</h1>
+		<div class="post__author">
+			<a href="{{ post.author.path }}">{{ post.author.name }}</a>
+		</div>
+		<div class="post__date">
+			{{ post.date }}
+		</div>
+		<div class="post__body">
+			{{post.content}}
+		</div>
+	</section>
+	<div class="comments">
+		{% if post.comments %}
+			<div class="comments__header">Comments</div>
+			{% for cmt in post.comments %}
+				{% include "comment.twig" with {comment:cmt} %}
+			{% endfor %}
+		{% endif %}
+		{% if post.comment_status == "closed" %}
+			<p>Comments are closed.</p>
+		{% else %}
+			{% include "comment-form.twig" %}
+		{% endif %}
+	</article>
 {% endblock %}
